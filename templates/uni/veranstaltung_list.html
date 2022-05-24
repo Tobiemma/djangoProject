@@ -1,0 +1,25 @@
+{% extends 'uni/base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <a href="{% url 'add_student' %}" class="btn btn-primary"> Studierende hinzufügen</a>
+     <a href="{% url 'student_list' %}" class="btn btn-primary"> Studierendeliste</a>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Studierenden</th>
+            <th>Fachbereiche</th>
+
+        </tr>
+        </thead>
+    {% for lesson in lessons %}
+       <tr>
+       <td>{{ lesson.title }}</td>
+       <td>{{ lesson.studierende.all|join:', ' }}</td>
+       <td>{{ lesson.fachbereich }}</td>
+
+       </tr>
+    {% endfor %}
+
+    </table>
+{% endblock %}
